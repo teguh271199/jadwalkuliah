@@ -13,14 +13,14 @@ class JadwalApp extends StatelessWidget {
     );
   }
 }
-
+// Untuk menangani perubahan saat menambahkan jadwal //
 class JadwalHomePage extends StatefulWidget {
   @override
   _JadwalHomePageState createState() => _JadwalHomePageState();
 }
 
 class _JadwalHomePageState extends State<JadwalHomePage> {
-  final List<Map<String, String>> _jadwalList = [];
+  final List<Map<String, String>> _jadwalList = []; // Menyimpan daftar jadwal 
 
   final TextEditingController _hariController = TextEditingController();
   final TextEditingController _mataKuliahController = TextEditingController();
@@ -74,7 +74,7 @@ class _JadwalHomePageState extends State<JadwalHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final media = MediaQuery.of(context);
+    final media = MediaQuery.of(context); // Deteksi orientasi (potrait/landscape) //
     final isPortrait = media.orientation == Orientation.portrait;
     final screenHeight = media.size.height;
     final screenWidth = media.size.width;
@@ -90,7 +90,7 @@ class _JadwalHomePageState extends State<JadwalHomePage> {
             flex: 3,
             child: _jadwalList.isEmpty
                 ? Center(child: Text('Belum ada jadwal'))
-                : ListView.builder(
+                : ListView.builder( // Menampilkan daftar jadwal yang ditambahkan //
                     itemCount: _jadwalList.length,
                     itemBuilder: (context, index) {
                       final jadwal = _jadwalList[index];
@@ -144,7 +144,7 @@ class _JadwalHomePageState extends State<JadwalHomePage> {
     return [
       SizedBox(
         width: inputWidth,
-        child: TextField(
+        child: TextField( // Input hari, mata kuliah, dan jam //
           controller: _hariController,
           decoration: InputDecoration(labelText: 'Hari'),
         ),
